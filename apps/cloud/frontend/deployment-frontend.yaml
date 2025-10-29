@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: apparel-store
+spec:
+  replicas: 6  # Scaled for Black Friday traffic
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: acrname.azurecr.io/frontend:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: SHOW_PROMO_BANNER
+          valueFrom:
+            configMapKeyRef:
+              name: frontend-config
+              key: showPromoBanner

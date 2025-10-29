@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pos
+  namespace: apparel-store
+spec:
+  replicas: 5  # Scaled for Black Friday traffic
+  selector:
+    matchLabels:
+      app: pos
+  template:
+    metadata:
+      labels:
+        app: pos
+    spec:
+      containers:
+      - name: pos
+        image: acrname.azurecr.io/pos:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DISCOUNT_RULES
+          valueFrom:
+            configMapKeyRef:
+              name: pos-pricing-rules
+              key: discountRules
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: db-password
