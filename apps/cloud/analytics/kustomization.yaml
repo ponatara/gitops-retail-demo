@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - deployment-analytics.yaml
+  - service-analytics.yaml
+
+commonLabels:
+  app: analytics
+  component: cloud
+  version: v1.0
+
+namespace: apparel-store
