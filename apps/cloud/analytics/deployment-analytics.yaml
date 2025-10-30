@@ -15,6 +15,11 @@ spec:
     spec:
       containers:
       - name: analytics
-        image: acrname.azurecr.io/analytics:latest
+        image: nginx:alpine
         ports:
-        - containerPort: 8080
+        - containerPort: 80
+        env:
+        - name: SERVICE_NAME
+          value: "analytics-placeholder"
+        - name: MESSAGE
+          value: "Analytics service placeholder - coming soon!"
