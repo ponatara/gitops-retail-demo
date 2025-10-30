@@ -4,7 +4,7 @@ metadata:
   name: frontend
   namespace: apparel-store
 spec:
-  replicas: 6  # Scaled for Black Friday traffic
+  replicas: 6
   selector:
     matchLabels:
       app: frontend
@@ -13,14 +13,10 @@ spec:
       labels:
         app: frontend
     spec:
+      imagePullSecrets:
+      - name: acr-secret
       containers:
       - name: frontend
-        image: acrname.azurecr.io/frontend:latest
+        image: retailstorefrontacr.azurecr.io/react-storefront:v1.0
         ports:
         - containerPort: 80
-        env:
-        - name: SHOW_PROMO_BANNER
-          valueFrom:
-            configMapKeyRef:
-              name: frontend-config
-              key: showPromoBanner
