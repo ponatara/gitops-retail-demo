@@ -2,9 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pos
-  namespace: apparel-store
+  namespace: retail-pos
 spec:
-  replicas: 5  # Scaled for Black Friday traffic
+  replicas: 5
   selector:
     matchLabels:
       app: pos
@@ -15,17 +15,13 @@ spec:
     spec:
       containers:
       - name: pos
-        image: acrname.azurecr.io/pos:latest
+        image: nginx:alpine
         ports:
-        - containerPort: 8080
+        - containerPort: 80
         env:
-        - name: DISCOUNT_RULES
-          valueFrom:
-            configMapKeyRef:
-              name: pos-pricing-rules
-              key: discountRules
-        - name: DB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: db-secret
-              key: db-password
+        - name: SERVICE_NAME
+          value: "pos-placeholder"
+        - name: MESSAGE
+          value: "Point of Sale service placeholder - coming soon!"
+        - name: LOCATION
+          value: "edge-location"
