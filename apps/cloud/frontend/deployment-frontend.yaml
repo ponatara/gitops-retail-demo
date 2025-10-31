@@ -17,6 +17,6 @@ spec:
       - name: acr-secret
       containers:
       - name: frontend
-        image: retailstorefrontacr.azurecr.io/react-storefront:v1.0
+        image: retailstorefrontacr.azurecr.io/react-storefront:v2.0
         ports:
         - containerPort: 80
