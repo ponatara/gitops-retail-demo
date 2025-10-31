@@ -6,3 +6,4 @@ resources:
   - deployment-frontend.yaml
   - service-frontend.yaml
   - ingress.yaml
+  - configmap-frontend.yaml  # Added for Black Friday promotional configuration
