@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pricing-service
+  namespace: apparel-store
+  labels:
+    app: pricing-service
+    tier: backend
+spec:
+  replicas: 5  # Scaled for Black Friday pricing calculations
+  selector:
+    matchLabels:
+      app: pricing-service
+  template:
+    metadata:
+      labels:
+        app: pricing-service
+    spec:
+      containers:
+      - name: pricing-engine
+        image: retailstorefrontacr.azurecr.io/pricing-service:v2.3
+        ports:
+        - containerPort: 8080
+        env:
+        - name: BLACK_FRIDAY_ENABLED
+          valueFrom:
+            configMapKeyRef:
+              name: pricing-config
+              key: black-friday-enabled
+        - name: WINTER_JACKETS_DISCOUNT
+          valueFrom:
+            configMapKeyRef:
+              name: pricing-config
+              key: winter-jackets-discount
+        - name: BOOTS_DISCOUNT
+          valueFrom:
+            configMapKeyRef:
+              name: pricing-config
+              key: boots-discount
+        - name: WINTER_COATS_DISCOUNT
+          valueFrom:
+            configMapKeyRef:
+              name: pricing-config
+              key: winter-coats-discount
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "1Gi"
+            cpu: "1000m"
