@@ -4,7 +4,7 @@ metadata:
   name: frontend
   namespace: apparel-store
 spec:
-  replicas: 6
+  replicas: 15  # Scaled up for Black Friday traffic surge
   selector:
     matchLabels:
       app: frontend
@@ -17,6 +17,32 @@ spec:
       - name: acr-secret
       containers:
       - name: frontend
-        image: retailstorefrontacr.azurecr.io/react-storefront:v2.0
+        image: retailstorefrontacr.azurecr.io/react-storefront:v2.0  # Contoso Fashions branding
         ports:
         - containerPort: 80
+        env:
+        - name: REACT_APP_SHOW_PROMO_BANNER
+          valueFrom:
+            configMapKeyRef:
+              name: frontend-config
+              key: show-promo-banner
+              optional: true
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5

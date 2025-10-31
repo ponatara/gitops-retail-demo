@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-config
+  namespace: apparel-store
+data:
+  show-promo-banner: "true"  # Enable Black Friday promotional banner
+  cache-duration: "300"       # 5 minutes cache for high traffic
+  api-timeout: "5000"         # 5 second timeout for backend calls
