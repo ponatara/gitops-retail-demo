@@ -1,27 +1,36 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pos
+  name: pos-ui
   namespace: retail-pos
 spec:
-  replicas: 5
+  replicas: 1
   selector:
     matchLabels:
-      app: pos
+      app: pos-ui
   template:
     metadata:
       labels:
-        app: pos
+        app: pos-ui
     spec:
+      imagePullSecrets:
+      - name: acr-secret
       containers:
-      - name: pos
-        image: nginx:alpine
+      - name: pos-ui
+        image: retailstorefrontacr.azurecr.io/pos-ui:v1.0
         ports:
         - containerPort: 80
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "250m"
         env:
-        - name: SERVICE_NAME
-          value: "pos-placeholder"
-        - name: MESSAGE
-          value: "Point of Sale service placeholder - coming soon!"
-        - name: LOCATION
-          value: "edge-location"
+        - name: REACT_APP_PRICING_API_URL
+          valueFrom:
+            configMapKeyRef:
+              name: pricing-config
+              key: api_url
+              optional: true
