@@ -4,7 +4,7 @@ metadata:
   name: frontend
   namespace: apparel-store
 spec:
-  replicas: 15  # Scaled up for Black Friday traffic surge
+  replicas: 3  # Baseline replica count
   selector:
     matchLabels:
       app: frontend
@@ -17,7 +17,7 @@ spec:
       - name: acr-secret
       containers:
       - name: frontend
-        image: retailstorefrontacr.azurecr.io/react-storefront:v4.0  # Contoso Fashions branding & new design
+        image: retailstorefrontacr.azurecr.io/react-storefront:v3.0  # Baseline version
         ports:
         - containerPort: 80
         env:
