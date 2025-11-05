@@ -4,7 +4,7 @@ metadata:
   name: frontend
   namespace: apparel-store
 spec:
-  replicas: 15  # Scaled up for Black Friday traffic surge
+  replicas: 25  # Black Friday surge: Scaled up for massive traffic
   selector:
     matchLabels:
       app: frontend
@@ -22,11 +22,7 @@ spec:
         - containerPort: 80
         env:
         - name: REACT_APP_SHOW_PROMO_BANNER
-          valueFrom:
-            configMapKeyRef:
-              name: frontend-config
-              key: show-promo-banner
-              optional: true
+          value: "true"  # Enable Black Friday promotional banner
         resources:
           requests:
             memory: "256Mi"
