@@ -7,7 +7,12 @@ data:
   discountRules: |
     {
       "BlackFriday": {
-        "category": "Apparel",
-        "discount": "0%"
+        "enabled": true,
+        "winter-coats": "55%",
+        "boots": "50%", 
+        "winter-jackets": "60%",
+        "accessories": "40%",
+        "location": "Seattle",
+        "surge-mode": "active"
       }
     }

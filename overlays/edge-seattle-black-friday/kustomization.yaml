@@ -1,0 +1,46 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Black Friday Seattle POS Overlay
+# This extends the baseline seattle config with surge modifications
+
+namespace: retail-pos
+
+resources:
+  - ../edge-seattle  # Build on existing Seattle baseline
+
+patches:
+- target:
+    kind: Deployment
+    name: pos-ui
+  patch: |-
+    - op: replace
+      path: /spec/replicas
+      value: 3
+    - op: add
+      path: /spec/template/spec/containers/0/env/-
+      value:
+        name: BLACK_FRIDAY_ENABLED
+        value: "true"
+    - op: add
+      path: /spec/template/spec/containers/0/env/-
+      value:
+        name: SURGE_PRICING_ACTIVE
+        value: "true"
+
+configMapGenerator:
+- name: black-friday-pricing-seattle
+  literals:
+  - event=black-friday
+  - location=seattle
+  - winter-coats-discount=55
+  - boots-discount=50
+  - winter-jackets-discount=60
+  - accessories-discount=40
+  - surge-mode=active
+  - timezone=PST
+
+commonLabels:
+  black-friday: "true"
+  location: seattle
+  surge-event: active

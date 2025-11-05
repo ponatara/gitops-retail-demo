@@ -4,7 +4,7 @@ metadata:
   name: pos-ui
   namespace: retail-pos
 spec:
-  replicas: 1
+  replicas: 3  # Black Friday surge: Scaled up for increased store traffic
   selector:
     matchLabels:
       app: pos-ui
