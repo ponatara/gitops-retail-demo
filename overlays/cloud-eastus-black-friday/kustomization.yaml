@@ -15,21 +15,18 @@ patches:
     name: frontend
   patch: |-
     - op: replace
-      path: /spec/template/spec/containers/0/image
-      value: retailstorefrontacr.azurecr.io/react-storefront:v5.0-black-friday
-    - op: replace
       path: /spec/replicas
       value: 25
     - op: add
       path: /spec/template/spec/containers/0/env/-
       value:
-        name: REACT_APP_BLACK_FRIDAY_MODE
+        name: REACT_APP_SHOW_PROMO_BANNER
         value: "true"
     - op: add
       path: /spec/template/spec/containers/0/env/-
       value:
-        name: REACT_APP_SHOW_PROMO_BANNER
-        value: "true"
+        name: BLACK_FRIDAY_MODE
+        value: "active"
 
 - target:
     kind: Deployment
