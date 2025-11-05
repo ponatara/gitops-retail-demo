@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m
-  path: "./overlays/edge-chicago"
+  path: "./overlays/edge-chicago-black-friday"  # Switch to Black Friday overlay
   prune: true
   sourceRef:
     kind: GitRepository

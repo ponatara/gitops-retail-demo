@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m
-  path: "./overlays/cloud-eastus"
+  path: "./overlays/cloud-eastus-black-friday"  # Switch to Black Friday overlay
   prune: true
   sourceRef:
     kind: GitRepository
