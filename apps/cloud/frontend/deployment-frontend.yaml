@@ -4,7 +4,7 @@ metadata:
   name: frontend
   namespace: apparel-store
 spec:
-  replicas: 3  # Baseline replica count
+  replicas: 15  # Scaled up for Black Friday traffic surge
   selector:
     matchLabels:
       app: frontend
