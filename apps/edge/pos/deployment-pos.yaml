@@ -17,7 +17,7 @@ spec:
       - name: acr-secret
       containers:
       - name: pos-ui
-        image: retailstorefrontacr.azurecr.io/pos-ui:v1.0
+        image: retailstorefrontacr.azurecr.io/pos-ui:v2.0
         ports:
         - containerPort: 80
         resources:
