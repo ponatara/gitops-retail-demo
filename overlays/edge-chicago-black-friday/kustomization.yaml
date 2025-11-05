@@ -1,0 +1,54 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Black Friday Chicago POS Overlay  
+# Applied AFTER Seattle monitoring shows success
+# Progressive rollout: Seattle → Chicago
+
+namespace: retail-pos
+
+resources:
+  - ../edge-chicago  # Build on existing Chicago baseline
+
+patches:
+- target:
+    kind: Deployment
+    name: pos-ui
+  patch: |-
+    - op: replace
+      path: /spec/replicas
+      value: 3
+    - op: add
+      path: /spec/template/spec/containers/0/env/-
+      value:
+        name: BLACK_FRIDAY_ENABLED
+        value: "true"
+    - op: add
+      path: /spec/template/spec/containers/0/env/-
+      value:
+        name: SURGE_PRICING_ACTIVE
+        value: "true"
+    - op: add
+      path: /spec/template/spec/containers/0/env/-
+      value:
+        name: ROLLOUT_PHASE
+        value: "phase-2-chicago"
+
+configMapGenerator:
+- name: black-friday-pricing-chicago
+  literals:
+  - event=black-friday
+  - location=chicago
+  - winter-coats-discount=55
+  - boots-discount=50
+  - winter-jackets-discount=60
+  - accessories-discount=40
+  - surge-mode=active
+  - timezone=CST
+  - rollout-phase=2
+
+commonLabels:
+  black-friday: "true"
+  location: chicago
+  surge-event: active
+  rollout-phase: "2"

@@ -4,11 +4,12 @@ metadata:
   name: pricing-config
   namespace: apparel-store
 data:
-  # Black Friday Pricing Rules (Applied at Runtime)
+  # Black Friday Pricing Rules (Applied at Runtime) - STANDARDIZED
   black-friday-enabled: "true"
-  winter-jackets-discount: "50"  # 50% off winter jackets
-  boots-discount: "40"           # 40% off boots  
-  winter-coats-discount: "45"    # 45% off winter coats
+  winter-jackets-discount: "60"  # 60% off winter jackets (SURGE PRICING)
+  boots-discount: "50"           # 50% off boots (SURGE PRICING) 
+  winter-coats-discount: "55"    # 55% off winter coats (SURGE PRICING)
+  accessories-discount: "40"     # 40% off bags and watches (NEW)
   
   # Regional Tax Configuration
   us-east-tax-rate: "8.25"
