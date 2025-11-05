@@ -17,7 +17,7 @@ spec:
       - name: acr-secret
       containers:
       - name: pos-ui
-        image: retailstorefrontacr.azurecr.io/react-pos:v4.3  # Updated with 6 focused product categories
+        image: retailstorefrontacr.azurecr.io/react-pos:v4.4  # Updated ZAVA logo + winter styling
         ports:
         - containerPort: 80
         resources:
