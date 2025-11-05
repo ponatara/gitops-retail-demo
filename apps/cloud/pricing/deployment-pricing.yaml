@@ -7,7 +7,7 @@ metadata:
     app: pricing-service
     tier: backend
 spec:
-  replicas: 1
+  replicas: 5  # Scaled for Black Friday pricing calculations
   selector:
     matchLabels:
       app: pricing-service
@@ -22,7 +22,26 @@ spec:
         ports:
         - containerPort: 8080
         env:
-        # No Black Friday env vars for baseline
+        - name: BLACK_FRIDAY_ENABLED
+          valueFrom:
+            configMapKeyRef:
+              name: pricing-config
+              key: black-friday-enabled
+        - name: WINTER_JACKETS_DISCOUNT
+          valueFrom:
+            configMapKeyRef:
+              name: pricing-config
+              key: winter-jackets-discount
+        - name: BOOTS_DISCOUNT
+          valueFrom:
+            configMapKeyRef:
+              name: pricing-config
+              key: boots-discount
+        - name: WINTER_COATS_DISCOUNT
+          valueFrom:
+            configMapKeyRef:
+              name: pricing-config
+              key: winter-coats-discount
         resources:
           requests:
             memory: "512Mi"

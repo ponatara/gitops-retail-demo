@@ -4,11 +4,11 @@ metadata:
   name: pricing-config
   namespace: apparel-store
 data:
-  # Baseline Pricing Rules (No Black Friday)
-  black-friday-enabled: "false"
-  winter-jackets-discount: "0"
-  boots-discount: "0"
-  winter-coats-discount: "0"
+  # Black Friday Pricing Rules (Applied at Runtime)
+  black-friday-enabled: "true"
+  winter-jackets-discount: "50"  # 50% off winter jackets
+  boots-discount: "40"           # 40% off boots  
+  winter-coats-discount: "45"    # 45% off winter coats
   
   # Regional Tax Configuration
   us-east-tax-rate: "8.25"
