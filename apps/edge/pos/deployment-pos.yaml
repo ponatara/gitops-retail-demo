@@ -26,6 +26,12 @@ spec:
             configMapKeyRef:
               name: black-friday-pos-config
               key: BLACK_FRIDAY_ENABLED
+        - name: REACT_APP_PRICING_API_URL
+          valueFrom:
+            configMapKeyRef:
+              name: pricing-config
+              key: api_url
+              optional: true
         resources:
           requests:
             memory: "128Mi"
@@ -33,10 +39,3 @@ spec:
           limits:
             memory: "256Mi"
             cpu: "250m"
-        env:
-        - name: REACT_APP_PRICING_API_URL
-          valueFrom:
-            configMapKeyRef:
-              name: pricing-config
-              key: api_url
-              optional: true
