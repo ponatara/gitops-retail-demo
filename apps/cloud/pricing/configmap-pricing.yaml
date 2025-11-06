@@ -4,12 +4,11 @@ metadata:
   name: pricing-config
   namespace: apparel-store
 data:
-  # BLACK FRIDAY MEGA SURGE - Enhanced Discounts
-  black-friday-enabled: "true"
-  winter-jackets-discount: "60"  # 60% off winter jackets (increased from 50%)
-  boots-discount: "50"           # 50% off boots (increased from 40%)
-  winter-coats-discount: "55"    # 55% off winter coats (increased from 45%)
-  accessories-discount: "40"     # 40% off bags and watches
+  black-friday-enabled: "false"
+  winter-jackets-discount: "30"
+  boots-discount: "25"
+  winter-coats-discount: "35"
+  accessories-discount: "20"
   
   # Regional Tax Configuration
   us-east-tax-rate: "8.25"

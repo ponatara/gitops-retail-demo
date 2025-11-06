@@ -7,7 +7,7 @@ metadata:
     app: pricing-service
     tier: backend
 spec:
-  replicas: 10  # Black Friday surge: Doubled pricing service capacity
+  replicas: 5
   selector:
     matchLabels:
       app: pricing-service
