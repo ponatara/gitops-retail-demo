@@ -17,7 +17,7 @@ spec:
       - name: acr-secret
       containers:
       - name: pos-ui
-        image: retailstorefrontacr.azurecr.io/react-pos:v5.1-black-friday-fixed  # Fixed Black Friday discount logic
+        image: retailstorefrontacr.azurecr.io/react-pos:v6.0-black-friday-final  # Final corrected Black Friday implementation
         ports:
         - containerPort: 80
         env:
