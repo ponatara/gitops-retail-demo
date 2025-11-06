@@ -6,7 +6,6 @@ namespace: apparel-store
 resources:
   - ../../apps/cloud/frontend
   - ../../apps/cloud/analytics
-  - ../../apps/cloud/pricing
 
 configMapGenerator:
   - name: black-friday-config
