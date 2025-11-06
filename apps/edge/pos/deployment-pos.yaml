@@ -17,18 +17,12 @@ spec:
       - name: acr-secret
       containers:
       - name: pos-ui
-        image: retailstorefrontacr.azurecr.io/react-pos:v6.0-black-friday-final  # Final corrected Black Friday implementation
+        image: retailstorefrontacr.azurecr.io/react-pos:v6.0-black-friday-final  # Final corrected Black Friday implementation with build-time env vars
         ports:
         - containerPort: 80
         env:
-        # Black Friday features are compiled at build-time in v5.0-black-friday image
+        # Black Friday features are compiled at build-time in v6.0-black-friday-final image
         # No runtime environment variables needed for React applications
-        - name: REACT_APP_PRICING_API_URL
-          valueFrom:
-            configMapKeyRef:
-              name: pricing-config
-              key: api_url
-              optional: true
         resources:
           requests:
             memory: "128Mi"
