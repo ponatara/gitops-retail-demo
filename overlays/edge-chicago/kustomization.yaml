@@ -7,9 +7,6 @@ resources:
   - ../../apps/edge/pos
 
 configMapGenerator:
-  - name: black-friday-pos-config
+  - name: pos-config
     literals:
       - STORE_LOCATION=Chicago
-      - EVENT_NAME=Black Friday Store Sale
-
-# Note: Black Friday features are compiled at build-time, no image override needed
