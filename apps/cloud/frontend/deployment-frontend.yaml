@@ -4,7 +4,7 @@ metadata:
   name: frontend
   namespace: apparel-store
 spec:
-  replicas: 3
+  replicas: 25  # Black Friday surge: Scaled up for massive traffic
   selector:
     matchLabels:
       app: frontend
@@ -17,12 +17,17 @@ spec:
       - name: acr-secret
       containers:
       - name: frontend
-        image: retailstorefrontacr.azurecr.io/react-storefront:v4.4
+        image: retailstorefrontacr.azurecr.io/react-storefront:v4.4  # Updated ZAVA logo + winter snowflakes theme
         ports:
         - containerPort: 80
         env:
         - name: REACT_APP_SHOW_PROMO_BANNER
-          value: "false"
+          value: "true"  # Enable Black Friday promotional banner
+        - name: REACT_APP_BLACK_FRIDAY_MODE
+          valueFrom:
+            configMapKeyRef:
+              name: black-friday-config
+              key: BLACK_FRIDAY_MODE
         resources:
           requests:
             memory: "256Mi"

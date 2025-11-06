@@ -1,5 +1,21 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+
+namespace: apparel-store
+
 resources:
   - ../../apps/cloud/frontend
   - ../../apps/cloud/analytics
+  - ../../apps/cloud/pricing
+
+configMapGenerator:
+  - name: black-friday-config
+    literals:
+      - BLACK_FRIDAY_MODE=true
+      - PROMO_BANNER_ENABLED=true
+      - EVENT_NAME=Black Friday Mega Sale
+      - BANNER_MESSAGE=🔥 BLACK FRIDAY SALE! 50% OFF Winter Collection - Limited Time Only!
+
+images:
+  - name: retailstorefrontacr.azurecr.io/react-storefront
+    newTag: v5.0-black-friday
