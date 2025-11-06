@@ -4,7 +4,7 @@ metadata:
   name: pos-ui
   namespace: retail-pos
 spec:
-  replicas: 3  # Black Friday surge: Scaled up for increased store traffic
+  replicas: 2
   selector:
     matchLabels:
       app: pos-ui
@@ -17,7 +17,7 @@ spec:
       - name: acr-secret
       containers:
       - name: pos-ui
-        image: retailstorefrontacr.azurecr.io/react-pos:v4.4  # Updated ZAVA logo + winter styling
+        image: retailstorefrontacr.azurecr.io/react-pos:v4.4
         ports:
         - containerPort: 80
         resources:
