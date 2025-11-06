@@ -1,4 +1,19 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+
+namespace: retail-pos
+
 resources:
   - ../../apps/edge/pos
+
+configMapGenerator:
+  - name: black-friday-pos-config
+    literals:
+      - BLACK_FRIDAY_ENABLED=true
+      - STORE_LOCATION=Seattle
+      - SURGE_PRICING_ACTIVE=true
+      - EVENT_NAME=Black Friday Store Sale
+
+images:
+  - name: retailstorefrontacr.azurecr.io/react-pos
+    newTag: v5.0-black-friday
