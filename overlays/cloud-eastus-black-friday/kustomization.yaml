@@ -20,16 +20,7 @@ patches:
     - op: replace
       path: /spec/template/spec/containers/0/image
       value: retailstorefrontacr.azurecr.io/react-storefront:v5.0-black-friday-debug
-    - op: add
-      path: /spec/template/spec/containers/0/env/-
-      value:
-        name: REACT_APP_SHOW_PROMO_BANNER
-        value: "true"
-    - op: add
-      path: /spec/template/spec/containers/0/env/-
-      value:
-        name: BLACK_FRIDAY_MODE
-        value: "active"
+    # Note: Black Friday features are compiled at build-time, no runtime env vars needed
 
 - target:
     kind: Deployment

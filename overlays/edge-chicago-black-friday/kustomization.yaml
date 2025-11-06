@@ -21,13 +21,7 @@ patches:
     - op: replace
       path: /spec/template/spec/containers/0/image
       value: retailstorefrontacr.azurecr.io/react-pos:v5.0-black-friday
-    - op: add
-      path: /spec/template/spec/containers/0/env/-
-      value:
-        name: BLACK_FRIDAY_ENABLED
-        value: "true"
-    - op: add
-      path: /spec/template/spec/containers/0/env/-
+    # Note: Black Friday features are compiled at build-time, no runtime env vars needed
       value:
         name: SURGE_PRICING_ACTIVE
         value: "true"

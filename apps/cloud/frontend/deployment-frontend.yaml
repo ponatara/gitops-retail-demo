@@ -21,13 +21,8 @@ spec:
         ports:
         - containerPort: 80
         env:
-        - name: REACT_APP_SHOW_PROMO_BANNER
-          value: "true"  # Enable Black Friday promotional banner
-        - name: REACT_APP_BLACK_FRIDAY_MODE
-          valueFrom:
-            configMapKeyRef:
-              name: black-friday-config
-              key: BLACK_FRIDAY_MODE
+        # Black Friday features are compiled at build-time in v5.0-black-friday-debug image
+        # No runtime environment variables needed for React applications
         resources:
           requests:
             memory: "256Mi"

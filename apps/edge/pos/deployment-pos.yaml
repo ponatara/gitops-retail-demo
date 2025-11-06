@@ -21,11 +21,8 @@ spec:
         ports:
         - containerPort: 80
         env:
-        - name: BLACK_FRIDAY_ENABLED
-          valueFrom:
-            configMapKeyRef:
-              name: black-friday-pos-config
-              key: BLACK_FRIDAY_ENABLED
+        # Black Friday features are compiled at build-time in v5.0-black-friday image
+        # No runtime environment variables needed for React applications
         - name: REACT_APP_PRICING_API_URL
           valueFrom:
             configMapKeyRef:
