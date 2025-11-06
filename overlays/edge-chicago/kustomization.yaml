@@ -16,4 +16,4 @@ configMapGenerator:
 
 images:
   - name: retailstorefrontacr.azurecr.io/react-pos
-    newTag: v5.0-black-friday
+    newTag: v5.1-black-friday-fixed
