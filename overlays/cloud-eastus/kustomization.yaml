@@ -17,4 +17,4 @@ configMapGenerator:
 
 images:
   - name: retailstorefrontacr.azurecr.io/react-storefront
-    newTag: v5.0-black-friday
+    newTag: v5.0-black-friday-debug
