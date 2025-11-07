@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pos-ui
+  namespace: retail-pos
+spec:
+  replicas: 4  # Increase for Black Friday traffic
+  template:
+    spec:
+      containers:
+      - name: pos-ui
+        image: retailstorefrontacr.azurecr.io/react-pos:v6.0-black-friday-final  # BLACK FRIDAY with banner
