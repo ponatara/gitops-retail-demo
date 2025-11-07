@@ -4,6 +4,5 @@ metadata:
   name: frontend-config
   namespace: apparel-store
 data:
-  show-promo-banner: "true"  # Enable Black Friday promotional banner
-  cache-duration: "300"       # 5 minutes cache for high traffic
-  api-timeout: "5000"         # 5 second timeout for backend calls
+  cache-duration: "300"       # 5 minutes cache for normal traffic
+  api-timeout: "3000"         # 3 second timeout for backend calls
