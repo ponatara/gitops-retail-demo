@@ -10,3 +10,6 @@ configMapGenerator:
   - name: pos-config
     literals:
       - STORE_LOCATION=New York
+
+patchesStrategicMerge:
+  - pos-black-friday-patch.yaml
