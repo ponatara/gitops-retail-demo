@@ -1,1 +1,1 @@
-# Black Friday Frontend Deployment - Ready for PR
+# Black Friday Seattle POS Deployment - Ready for PR
