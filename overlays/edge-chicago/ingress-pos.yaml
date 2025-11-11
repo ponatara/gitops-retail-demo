@@ -4,10 +4,11 @@ metadata:
   name: pos-chicago-ingress
   namespace: retail-pos
   annotations:
-    kubernetes.io/ingress.class: "nginx"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    traefik.ingress.kubernetes.io/redirect-scheme: "https"
+    traefik.ingress.kubernetes.io/redirect-permanent: "true"
 spec:
+  ingressClassName: traefik
   tls:
   - hosts:
     - chicago-pos.zavafashions-demo.com
