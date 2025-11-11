@@ -1,1 +1,1 @@
-# Black Friday Chicago & New York POS Deployment - Ready for PR
+# Black Friday Seattle POS Deployment - Ready for PR
