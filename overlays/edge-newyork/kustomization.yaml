@@ -6,6 +6,9 @@ namespace: retail-pos
 resources:
   - ../../apps/edge/pos
 
+patchesStrategicMerge:
+  - pos-black-friday-patch.yaml
+
 configMapGenerator:
   - name: pos-config
     literals:
