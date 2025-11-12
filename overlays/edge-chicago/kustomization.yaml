@@ -6,12 +6,6 @@ namespace: retail-pos
 resources:
   - ../../apps/edge/pos
 
-patches:
-  - path: pos-black-friday-patch.yaml
-    target:
-      kind: Deployment
-      name: pos-ui
-
 configMapGenerator:
   - name: pos-config
     literals:
