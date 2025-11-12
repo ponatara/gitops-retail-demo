@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pos-ui
+spec:
+  template:
+    spec:
+      containers:
+      - name: pos-ui
+        image: retailstorefrontacr.azurecr.io/pos-ui:v6.0-black-friday-final
