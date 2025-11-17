@@ -10,9 +10,3 @@ configMapGenerator:
   - name: pos-config
     literals:
       - STORE_LOCATION=Chicago
-
-patches:
-  - path: pos-black-friday-patch.yaml
-    target:
-      kind: Deployment
-      name: pos-ui
