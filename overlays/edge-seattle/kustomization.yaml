@@ -10,3 +10,17 @@ configMapGenerator:
   - name: pos-config
     literals:
       - STORE_LOCATION=Seattle
+
+patches:
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: pos-ui
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 4
+      - op: replace
+        path: /spec/template/spec/containers/0/image
+        value: retailstorefrontacr.azurecr.io/react-pos:v6.0-black-friday-final
